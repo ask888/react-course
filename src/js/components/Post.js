@@ -1,13 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Post = props => (
-    <article className="item">
-        <h1>{props.data.title}</h1>
-        <p>Данные о заголове этого поста попали сюда засчет того что мы передаем их в этот компонент внутри компонента Posts.</p>
-        <div className="buttons">
-            <button>Show more</button>
-        </div>
-    </article>
+export default class Post extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {isOpen: false};
+        this.delSomePost = this.delSomePost.bind(this)
+    }
+    delSomePost(){
+        this.props.del(this.props.key1)
+        console.log(this.props)
+    }
+   render(){
+       const{isOpen} = this.state
+    return (
+        <article className="item">
+            <h1>{this.props.data.title}</h1>
+            {isOpen ? <p>{this.props.data.description}</p> : <p>{this.props.data.description.slice(0, 119)}</p>}
+            <div className="buttons">
+                <button onClick={this.toggleOpen }>Show more</button>
+                <button onClick={this.delSomePost}>Delete</button>
+            </div>
+        </article>
+    
+    
 );
+   }
 
-export default Post;
+   toggleOpen = () => {
+       this.setState({
+           isOpen: !this.state.isOpen 
+       })
+   }
+    }
+
