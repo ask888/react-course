@@ -1,0 +1,39 @@
+.clean {
+    padding: 7px;
+    width: 100%;
+    border: none;
+}
+.add-todo {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: $darkAccent;
+    border-radius: 5px;
+    input, textarea {
+        color: #fff;
+        outline: none;
+        background-color: transparent;
+        border-bottom: solid 2px rgb(161, 161, 151);
+        @extend .clean;
+        &:focus{
+            border-bottom: 2px solid yellow;
+        }     
+    }
+
+    textarea {
+        margin-top: 10px;
+        resize: vertical;
+        outline: none;
+    }
+    
+    button {
+        margin-top: 10px;
+        background-color: yellow;
+        outline: none;
+        @extend .clean;
+        &:active {
+          background: #2a2c28;
+          color: #fff;  
+          outline: none;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 $blue: #006ec5;
 $grey: #585858;
+$darkAccent: #000;
 
 html, body {
     font-family: "Tahoma";
@@ -10,14 +11,18 @@ html, body {
 
 body {
     min-height: 100%;
-    background: #eee;
+    background: rgb(240, 245, 196);
     background-size: 100% 100%;
 }
 
 
-.wrapper {
+.main-wrapper {
     margin: auto;
     padding-top: 30px;
     width: 80%;
     display: table;
+    border-radius: 5px;
+}
+h1{
+    text-align: center;
 }

@@ -8,7 +8,7 @@ console.log(path.join(__dirname, 'public'))
 module.exports = {
   devtool: 'source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:9090',
+    'webpack-dev-server/client?http://localhost:9093',
     'webpack/hot/only-dev-server',
     './src/js/index',
   ],
@@ -21,7 +21,7 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({ url: 'http://localhost:9090' }),
+    new OpenBrowserPlugin({ url: 'http://localhost:9093' }),
     new webpack.ProvidePlugin({
       '$': 'jquery',
     })
