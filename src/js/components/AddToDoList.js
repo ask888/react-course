@@ -1,31 +1,40 @@
 import React from 'react'
 
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+ const addtask = (payload) => ({type: "ADD_TODO", payload});
+ const mapDispatchToProps = (dispatch) => {
+     return bindActionCreators({addtask}, dispatch)
+ }
+
+
+@connect(null, mapDispatchToProps)
+
+
 export default class AddToDoList extends React.Component{
     constructor(props){
         super(props)
-        this.handleOnClick = this.handleOnClick.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
-    handleOnClick(){
-        if(this.refs.inpTitle.value != "" && this.refs.textArea.value != ""){
-            this.props.funAdd(this.refs.inpTitle.value, this.refs.textArea.value);
-            this.refs.inpTitle.value = ""
-            this.refs.textArea.value = ""
+
+    handleClick(event){
+        event.preventDefault();
+        let inpValue = {
+            title: this.refs.inpTitle.value, 
+            description: this.refs.description.value
         }
-        else(
-            console.log("Fill all forms")
+        this.props.addtask(inpValue)
+
+    }
+    render(){
+        return(
+            <form className='mm'>
+                <div className='add-todo'>
+                    <input type='text' ref='inpTitle' />
+                    <textarea ref='description'></textarea>
+                    <button onClick={this.handleClick}>Submit</button>
+                </div>
+            </form>
         )
     }
-
-
-render(){
-    return(
-        <div className= 'wrapper'>
-            <div className='add-todo'>
-                <input type='text' placeholder='Title' ref='inpTitle' />
-                <textarea ref='textArea' placeholder='Write your To Do here'></textarea>
-                <button onClick = {this.handleOnClick}>Add To Do</button>
-            </div>
-        </div>
-    )
-}
 }
