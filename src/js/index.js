@@ -5,4 +5,4 @@ import '../sass/common.scss';
 
 import MainLayout from "./containers/MainLayout";
 
-ReactDOM.render(<MainLayout>, document.getElementById());
+ReactDOM.render(<MainLayout />, document.getElementById('app'));

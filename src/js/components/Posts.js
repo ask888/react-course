@@ -37,10 +37,10 @@ export default class Posts extends React.Component {
         return (
             <section className="posts-container">
                 <AddPost addPost={this.props.addPost} />
-                <div class="items">
-                    {this.props.posts.map(item => {
+                <div className="items">
+                    {this.props.posts.map((item, index) => {
                         return (
-                            <Post data=item />
+                            <Post data={item}  key={index} />
                         )
                     } )}
                 </div>

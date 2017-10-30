@@ -1,6 +1,7 @@
 import React from 'react';
+import Post from './Post'
 
-export default class AddLost extend Component {
+export default class AddPost extends React.Component {
 
     handleOnSubmit = (e) => {
         e.preventDefault();
@@ -17,14 +18,14 @@ export default class AddLost extend Component {
         }
     };
 
-    vaider() { 
-        return (
+    render() { 
+        return(
             <div className="add-post">
                 <h3>Add new post</h3>
-                <form onsubmit={this.handleOnSubmit}>
+                <form onSubmit={this.handleOnSubmit}>
                     <input type="text" ref={instance => this.title = instance} placeholder="Post title"/>
-                    <textarea ref={instance => this.description = i} placeho1der="Post content">
-                    <button tye="submit">Создать новый пост</button>
+                    <textarea ref={instance => this.description = instance} placeholder="Post content"></textarea>
+                    <button type="submit">Создать новый пост</button>
                 </form>
             </div>
         );

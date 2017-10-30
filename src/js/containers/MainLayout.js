@@ -6,16 +6,17 @@ import Posts from '../components/Posts';
 
 export default class MainLayout extends React.Component {
 
-    constructor() {
+    constructor(props) {
+        super(props)
         this.state = {
             posts: _posts
         };
 
-        this.handleAddPost = this.handleAddPost.bind();
+        this.handleAddPost = this.handleAddPost.bind(this);
     }
 
     handleAddPost(post) {
-        this.setState(posts: [ ...this.state.posts, post ])
+        this.setState({posts: [...this.state.posts, post ]})
     }
 
     // lifecycle methods !
@@ -50,11 +51,11 @@ export default class MainLayout extends React.Component {
 
     render() {
         return (
-            <div class="wrapper">
+            <div className="wrapper">
                 <h1>React Lesson: 2 [ Lifecycle, state & props ]</h1>
-                <Header>
+                <Header />
 
-                <Posts posts={this.sate.posts} addPost={this.handlePostAdd}>
+                <Posts posts={this.state.posts} addPost={this.handleAddPost} />
             </div>
         );
     }
