@@ -1,4 +1,6 @@
 import React from 'react';
+import Menu from '../components/Menu'
+import Slider from '../components/Slider'
 
 const Header = (props) => (
     <header className="header">
@@ -21,6 +23,15 @@ const Header = (props) => (
             <li>Сделать слайдер с использованием Children API</li>
             <li>Дополнительно: Использовать модуль react-transition-group для более плавной анимации слайдера.</li>
         </ul>
+        <Slider>
+            <p>Do you know</p>        
+            <p>How horrible</p>        
+            <p>React is</p>        
+            <p>That's why</p>        
+            <p>Just keep calm</p>        
+            <p>And drink some wine</p>        
+        </Slider>        
+        <Menu/>
     </header>
 );
 

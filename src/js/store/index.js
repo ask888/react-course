@@ -13,16 +13,15 @@ import reducers from '../reducers';
 
 // Custom middleware !
 const extendPostData = store => next => action => {
-    if(action.type === "ADD_POST") {
-        action = {...action, payload: {...action.payload, contentToggle: false}}    
-    }
+    console.log("I invoke action > ", action);
     next(action);
+    localStorage.setItem("posts", JSON.stringify(store.getState()))
 }
 
 // Middleware это прослойка между вызовом события и его
 // обработкой, middleware есть готовые и есть возможность
 // написать свой.
-const middleware = applyMiddleware(createLogger(), extendPostData);
+const middleware = applyMiddleware(extendPostData);
 
 
 // Используя функцию createStore описаную в библиотеке

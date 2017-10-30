@@ -1,4 +1,4 @@
-export default ({
+export default ( JSON.parse(localStorage.getItem("posts")) || {
     posts: [
         {
             title: "react",

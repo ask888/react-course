@@ -56,8 +56,8 @@ export default class Posts extends React.Component {
             <section className="posts-container">
                 <Header />
 
-                <AddPost addPost={this.props.addPost} />
-                {/*<Menu/>!*/}
+                {/* <AddPost addPost={this.props.addPost} /> */}
+                {/* <Menu/> */}
                 <div className="items">
                     {this.renderPosts()}
                 </div>
