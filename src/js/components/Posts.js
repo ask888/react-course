@@ -3,9 +3,9 @@ import React from 'react';
 import Post from '../components/Post';
 import AddPost from './AddPost';
 import Header from '../components/Header';
+import Edit from '../components/Edit';
 
-
-import { addPost } from '../actions';
+import { addPost, delPost } from '../actions';
 
 // Функция connect является связующим между компонентом и store из redux,
 // эта функция принимает два параметра:
@@ -25,13 +25,25 @@ const mapStateToProps = state => ({ posts: state.posts });
 
 // mapDispatchToProps - передаем все нужные нам actions в оборачеваемый компонент, но перед этим оборачиваем
 // все actions в функцию dispatch
-const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost }, dispatch) );
+const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost, delPost }, dispatch) );
 
 // @connect - "@" - обозначает декоратор, это es7. Функция "connect" декорирует объект, имеется ввиду что на
 // выходе мы получаем новый, измененный компонент который содержит в себе дополнительные функции и свойства,
 // а какие именно - мы определяем в функциях передаваемых внутрь функции connect.
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends React.Component {
+    constructor(props){
+        super(props)
+        this.togglerEdit = this.togglerEdit.bind(this)
+    }
+
+    state = {
+        editId: null
+    }
+
+    togglerEdit(id){
+        this.setState({editId: id})
+    }
 
     renderPosts() {
         if(this.props.posts) {
@@ -42,12 +54,16 @@ export default class Posts extends React.Component {
                 // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
                 // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
                 return (
-                    <Post data={item} key={index} index={index} push={this.props.history.push} />
+                    <Post data={item} key={index} index={index} push={this.props.history.push} delPost={this.props.delPost} 
+                    edit={this.togglerEdit} />
                 )
             })
         } else {
             return <p>Empty yet, or something was wrong.</p>
         }
+    }
+    unMountEditPost(){
+        this.setState({editId: null})
     }
 
     render() {
@@ -56,6 +72,7 @@ export default class Posts extends React.Component {
                 <Header />
 
                 {/* Компоненту AddPost чего-то нехватает, выясните чего и решите проблему! */}
+                {this.state.editId !== null ? <Edit id={this.state.editId} editPostClose={this.togglerEdit} />  : null}
                 <AddPost />
                 <div className="items">
                     {this.renderPosts()}

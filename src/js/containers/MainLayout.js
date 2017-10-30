@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Edit} from '../components/Edit'
 import Posts from '../components/Posts';
 import PostView from '../components/PostView';
 
@@ -22,8 +22,12 @@ export default class MainLayout extends React.Component {
     render() {
         return (
             <div className="wrapper">
+
                 <Switch>
-                    <Route exact path="/" component={Posts}/>     
+                    
+                    <Route exact path="/" component={Posts}/>  
+                    <Route path="/edit" component={Edit} />   
+                    <Route path="/post-:id" component={PostView} />   
                     <Route render={() => <div>Page Not Found</div>}/>
                 </Switch>
             </div>

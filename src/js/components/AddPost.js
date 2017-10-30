@@ -1,10 +1,20 @@
 import React from 'react';
+import posts from '../reducers/posts'
+import { addPost } from '../actions';
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 // Мне кажется что, чтобы у нас заработало добавление, нам нужно присоединить 
 // наш компонент к store и передать в компонент обернутуюю в dispatch функцию 
 // результат которой попадет в reducer который это обработает....... но 
-// ..но... я бы рекомендовал вам зайти в компонент в котором используется этот компонент и прочитать коментарий там
+// ..но... я бы рекомендовал вам зайти в компонент в котором используется этот компонент и прочитать к
+//оментарий там
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({addPost}, dispatch)
+}
 
+
+@connect(null, mapDispatchToProps)
 export default class AddPost extends React.Component {
 
     constructor(props) {

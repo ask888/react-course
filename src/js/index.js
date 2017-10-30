@@ -25,6 +25,6 @@ ReactDOM.render(
             <MainLayout />
         </Router>
     </Provider>
-    , document.getElementById('app'));
+    , document.getElementById('app')); 
 
 

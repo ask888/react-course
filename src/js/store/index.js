@@ -26,9 +26,11 @@ const middleware = applyMiddleware(createLogger());
 //    combineReducers, это нужно для коректной работы store. (каждый reducer отвечает за какую-то частичку данных в store)
 //  - middleware это дополнительный функционал который сработает перед тем как action дойдет до reducer'a
 //    это своего рода прослойка между функцией dispatch и reducer'ом
-const store = createStore(reducers, middleware);
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware);
 
 export default store;
+
+// import AddPost from '../components/AddPost'
 
 
 
