@@ -1,10 +1,29 @@
 import React from 'react';
 import Menu from '../components/Menu'
 import Slider from '../components/Slider'
+import Particles from 'react-particles-js';
 
 const Header = (props) => (
+    
     <header className="header">
-        <h1 className="page-title">React Lesson: 4 [ context, Children API ]</h1>
+        <div className='particles-wrapper'>
+            <div className='slider-wrapper'>
+                <Slider>
+                    <p>Do you know</p>        
+                    <p>How horrible</p>        
+                    <p>React is</p>        
+                    <p>That's why</p>        
+                    <p>Just keep calm</p>        
+                    <p>And drink some wine</p>        
+                </Slider>  
+                
+            </div> 
+            <Particles className="particle-block"/>   
+        </div> 
+        <Menu/>  
+        
+        
+        {/* <h1 className="page-title">React Lesson: 4 [ context, Children API ]</h1>
         <h3 className="description">
             Задания на сегодня:
         </h3>
@@ -22,17 +41,11 @@ const Header = (props) => (
             </li>
             <li>Сделать слайдер с использованием Children API</li>
             <li>Дополнительно: Использовать модуль react-transition-group для более плавной анимации слайдера.</li>
-        </ul>
-        <Slider>
-            <p>Do you know</p>        
-            <p>How horrible</p>        
-            <p>React is</p>        
-            <p>That's why</p>        
-            <p>Just keep calm</p>        
-            <p>And drink some wine</p>        
-        </Slider>        
-        <Menu/>
+        </ul> */}
+            
+        
     </header>
+
 );
 
 export default Header;

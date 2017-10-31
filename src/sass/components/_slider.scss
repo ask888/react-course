@@ -1,7 +1,21 @@
 .slider-container {
+    width: 750px;
     text-align: center;
     font-size: 40px;
     text-transform: uppercase;
     font-weight: bold;
-    margin: 40px;
+    margin: 100px;
+
+    p{
+       text-align: center
+    }
+}
+.particles-wrapper{
+    position: relative;
+}
+.slider-wrapper{
+    position: absolute;
+}
+.particle-block {
+    height: 250px;
 }

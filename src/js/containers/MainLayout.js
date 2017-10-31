@@ -5,6 +5,7 @@ import PostView from '../components/PostView';
 import AddPost from '../components/AddPost'
 import Notify from '../components/Notify'
 
+
 // Route - компонент принимающий два свойства:
 // 1. path - url
 // 2. component - компонент который отобразиться по указаному в path url.
@@ -25,13 +26,13 @@ export default class MainLayout extends React.Component {
         return (
             <div className="wrapper">
                 {/* <Header /> */}
-                
+                {/* <Particles /> */}
                 <Switch>
                     <Route exact path="/" component={Posts}/>
                     <Route path="/post-:postId" component={PostView}/>
                     <Route path="/add" component={AddPost}/>
                     {<Route path="/about" component={PostView}/>}
-
+                    <Route path="/search/:id" component={Posts}/>
                     <Route path="*" component={() => <div>Page Not Found</div>}/>
                 </Switch>
 

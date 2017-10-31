@@ -5,6 +5,11 @@ article.item {
   text-decoration: none;
   display: block;
   border: solid 5px transparent;
+
+  .visible{
+    text-decoration: line-through;
+  }
+  
   
   h1 {
     margin-bottom: 10px;

@@ -12,7 +12,8 @@
      line-height: 40px;
    }
    .search{
-     float: right;
+     
+     display: inline-block;
      margin-top: 50px;
      border: none;
      background: $accent;

@@ -23,11 +23,15 @@ import * as types from '../constants/ActionTypes';
 */
 
 export default function posts(state = InitialState.posts, action) {
-    let {type, payload} = action;
+    let {type, payload, index} = action;
 
     switch(type) {
         case types.ADD_POST:
             return [...state, payload];
+        case types.DEL_POST:
+            return state.filter((item, id) => index != id);
+            case types.DONE_POST:
+            return state.filter((item, id) => index != id);
         case types.UPDATE_CONTENT_TOGGLER:
             return state.map((item, index) => {
                 if(index === payload) return {...item, contentToggle: !item.contentToggle}

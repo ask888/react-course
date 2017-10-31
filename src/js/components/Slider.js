@@ -10,7 +10,7 @@ export default class Slider extends React.Component{
     }
     
 slider(){
-   setInterval(() => {
+    setInterval(() => {
             if(this.state.index == 5) {
                 this.setState({index: 0});
             }

@@ -30,8 +30,6 @@ export default class AddPost extends React.Component {
             this.description.value = '';
             this.setState({visible:true})
             setTimeout(() => {this.setState({visible: false})}, 2000)
-            // localStorage.setItem("item", JSON.stringify(new_post))
-            // localStorage.setItem("item", JSON.stringify(new_post))
         }
        
 

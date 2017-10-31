@@ -1,11 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {updateContentToggler} from '../actions';
+import {updateContentToggler, delPost, donePost} from '../actions';
+
 // Link - необходим для того чтобы переключатся между "страницами", по факту - аналог
 // обычного <a>, но работает с помощью BrowserHistory или hashHistory
 // вместо привычного нам href нужно писать to={`/some-url`}
 import {Link} from 'react-router-dom';
+
+const mapDispatchToProps = dispatch => (bindActionCreators({delPost, donePost}, dispatch))
 
 
 String.prototype.lessThan = function (max) {
@@ -15,12 +18,23 @@ String.prototype.lessThan = function (max) {
     }
     return tmp;
 };
-
+@connect(null, mapDispatchToProps)
 export default class Post extends React.Component {
+
+    state = {visible: false}
+
     handleShowMore = () => {
         this.props.updateContentToggler(this.props.index);
-        // this.setState({ contentToggle: !this.state.contentToggle });
+
+
     };
+    handleDel = () => {
+        this.props.delPost(this.props.index)
+        console.log(this.props.index)
+    }
+    handleDone = () => {
+        this.setState({visible:  !this.state.visible})
+    }
 
     contentView = (content) => {
         if(!this.props.data.contentToggle && content.length > 120) {
@@ -33,7 +47,7 @@ export default class Post extends React.Component {
     render() {
         return (
             <article className={this.props.data.contentToggle ? "item active" : "item"}>
-                <h1>{this.props.data.title}</h1>
+                <h1 className={this.state.visible ? "visible" : false}>{this.props.data.title}</h1>
                 <p>{this.contentView(this.props.data.description)}</p>
                 <ul className="links">
                     {(this.props.data.links) ? this.props.data.links.map((item, index) =>
@@ -41,8 +55,9 @@ export default class Post extends React.Component {
                 </ul>
                <div className="buttons">
                     <button onClick={this.handleShowMore}>{this.props.data.contentToggle ? "Show more" : "Show less"}</button>
-                    <button >Delete</button>
+                    <button onClick={this.handleDel}>Delete</button>
                     <button>Edit</button>
+                    <button onClick={this.handleDone}>Done</button>
                     <button onClick={() => this.props.push(`/post-${this.props.index}`)}>
                         View
                     </button>

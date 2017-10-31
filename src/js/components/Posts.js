@@ -21,7 +21,13 @@ import { bindActionCreators } from 'redux';
 
 // mapStateToProps - выбираем какие данные нам нужны из store, которые в дальнейшем запишутся в props
 // компонента который мы оборачиваем.
-const mapStateToProps = state => ({ posts: state.posts });
+const mapStateToProps = (state, ownProps) => { 
+    let id = ownProps.match.params.id
+    return {
+        posts: id ? state.posts.filter((item) => item.title.includes(id)) : state.posts
+    }
+    
+};
 
 // mapDispatchToProps - передаем все нужные нам actions в оборачеваемый компонент, но перед этим оборачиваем
 // все actions в функцию dispatch
